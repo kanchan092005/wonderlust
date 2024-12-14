@@ -1,0 +1,50 @@
+<% layout("/layouts/boilerplate") %>
+
+    <body>
+        <h2 class="createNew-heading">Edit Listed Item</h2>
+
+        </h3>
+        <form id="listing-form" method="POST" action="/listings/<%= listing.id %>?_method=PUT" class="needs-validation" enctype="multipart/form-data"
+            novalidate>
+            <h4 class="input-box-name">Title</h4>
+            <input id="title-input" name="listing[title]" type="text" class="input-box input-border"
+                value="<%= listing.title %>" required />
+            <span id="title-error" class="error-message"></span>
+            <br /><br />
+
+            <h4 class="input-box-name">Description</h4>
+            <input id="description-input" name="listing[description]" class="input-box input-border"
+                style="height: 60px;" value="<%= listing.description%>" required>
+            <span id="description-error" class="error-message"></span>
+            <br /><br />
+
+            <h4 class="input-box-name" style="margin-top: 30px;">Image of property</h4>
+            <input id="image-input" name="listing[image]" type="file" class="input-box input-border"
+                style="background-color: white; padding: 5px; padding-left: 10px;"
+                />
+            <span id="image-error" class="error-message"></span>
+            <br /><br />
+
+            <h4 class="input-box-name">Price</h4>
+            <input id="price-input" name="listing[price]" type="text" class="input-box input-border"
+                value="<%= listing.price %>" required />
+            <span id="price-error" class="error-message"></span>
+            <br /><br />
+
+            <h4 class="input-box-name">Country</h4>
+            <input id="country-input" name="listing[country]" type="text" class="input-box input-border"
+                value="<%= listing.country %>" required />
+            <span id="country-error" class="error-message"></span>
+            <br /><br />
+
+            <h4 class="input-box-name">City</h4>
+            <input id="location-input" name="listing[location]" type="text" class="input-box input-border"
+                value="<%= listing.location %>" required />
+            <span id="location-error" class="error-message"></span>
+            <br /><br />
+
+            <button class="add-btn" type="submit">Update</button>
+        </form>
+        <script src="/js/form_validation.js"></script>
+
+    </body>

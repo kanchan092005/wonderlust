@@ -1,0 +1,52 @@
+<% layout("/layouts/boilerplate") %>
+
+    <body>
+        <h3 class="createNew-heading">Create a New Listing</h3>
+        <br>
+        <div class="new-form-box">
+
+            <form id="listing-form" method="POST" action="/listings" class="needs-validation" enctype="multipart/form-data" novalidate>
+
+                <h4 class="input-box-name">Title</h4>
+                <input id="title-input" name="listing[title]" placeholder="Add a catchy title" type="text"
+                    class="input-box" required />
+                <span id="title-error" class="error-message"></span>
+                <br /><br />
+
+                <h4 class="input-box-name">Description</h4>
+                <input id="description-input" name="listing[description]" class="input-box" style="height: 60px;"
+                    required>
+                <span id="description-error" class="error-message"></span>
+                <br /><br />
+
+
+                <h4 class="input-box-name" style="margin-top: 30px;">Upload Listing Image</h4>
+
+                <input id="image-input" name="listing[image]" type="file" class="input-box" style="background-color: white; padding: 5px; padding-left: 10px;"
+                    required />
+                <span id="image-error" class="error-message"></span>
+                <br /><br />
+
+
+                <h4 class="input-box-name">Price</h4>
+
+                <input id="price-input" name="listing[price]" placeholder="INR Price" type="text" class="input-box"
+                    required />
+                <span id="price-error" class="error-message"></span>
+                <br /><br />
+                <h4 class="input-box-name">Country</h4>
+
+                <input id="country-input" name="listing[country]" placeholder="Country name" type="text"
+                    class="input-box" required />
+                <span id="country-error" class="error-message"></span>
+                <br /><br />
+                <h4 class="input-box-name">City</h4>
+
+                <input id="location-input" name="listing[location]" placeholder="location" type="text" class="input-box"
+                    required />
+                <span id="location-error" class="error-message"></span>
+                <br /><br />
+                <button class="add-btn" type="submit">submit</button>
+            </form>
+        </div>
+    </body>

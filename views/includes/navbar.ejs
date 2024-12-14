@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-sm bg-body-light border-bottom sticky-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/listings"><i class="fa-regular fa-compass"></i></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-link" href="/listings">Explore</a>
+
+            </div>
+
+            <div class="search-outer-box">
+                <div class="search-box">
+                    <input class="search-input" type="text" placeholder="Anywhere">
+                </div>
+
+                <div class="search-box">
+                    <input class="search-input" type="text" placeholder="Any week" >
+                </div>
+
+                <div class="search-box" style="border: 0;">
+                    <input class="search-input" type="text" placeholder="Add guest" >
+                </div>
+
+                <div class="search-btn">
+                    <i class="search-icon fa-solid fa-magnifying-glass fa-fade"></i>
+                </div>
+            </div>
+
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="/listings/new">Airbnb your home</a>
+
+                <% if(!currUser){ %>
+                    <a class="nav-link" href="/login"><b>Login </b>|</a>
+                    <a class="nav-link" href="/signup"><b>Signup</b> </a>
+                    <% } %>
+
+                        <% if(currUser){ %>
+                            <a class="nav-link" href="/logout">Logout <i class="fa-solid fa-right-from-bracket fa-sm"
+                                    style="color: #e60f0f;"></i></a>
+                            <% } %>
+            </div>
+        </div>
+    </div>
+</nav>

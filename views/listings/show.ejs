@@ -1,0 +1,99 @@
+<% layout("/layouts/boilerplate") %>
+
+    <body>
+        <div class="show-container">
+            <h3 class="createNew-heading">
+                <%= listing.title %>
+            </h3>
+            <div class="show-img-box">
+                <img src="<%= listing.image.url%>" alt="listing-image" class="show-img">
+            </div>
+            <ul>
+                <li class="show-text" style="font-weight: bold;">
+                    Owner:&nbsp; <%= listing.owner.username %>
+                </li>
+                <li class="show-text">
+                    <%= listing.description %>
+                </li>
+                <li class="show-text">&#8377; <%= listing.price.toLocaleString("en-IN") %>
+                </li>
+                <li class="show-text">
+                    <%= listing.location %>, <%= listing.country %>
+                </li>
+            </ul>
+            <% if(currUser && listing.owner && currUser._id.equals(listing.owner._id)){ %>
+                <a class="edit-btn" href="/listings/<%= listing.id %>/edit">Edit your listing</a>
+                <form method="post" action="/listings/<%= listing.id %>?_method=DELETE">
+                    <button class="delete-btn">Delete listing</button>
+                    <% } %>
+                </form>
+                <br><br>
+
+                <!--review box-->
+
+                <% if(currUser){ %>
+
+                    <div class="review-box">
+                        <hr>
+                        <br>
+                        <h4>Leave a review</h4>
+                        <br>
+                        <form action="/listings/<%= listing.id %>/reviews" method="post">
+                            <div>
+                                <label for="rating" class="review-titles">Rating</label>
+                                <input type="range" min="1" max="5" id="rating" name="review[rating]"
+                                    class="form-range review-range">
+                            </div>
+
+                            <div>
+                                <label for="comment" class="review-titles">Comment</label>
+                                <br><br>
+                                <textarea name="review[comment]" id="comment" cols="30" rows="4" class="form-control"
+                                    required></textarea>
+                            </div>
+                            <br>
+                            <button class="edit-btn" style="border: 0; font-size: 20px; margin-left: 0;">Submit</button>
+                        </form>
+
+                        <% } %>
+
+                            <br><br>
+
+                            <hr>
+
+                            <div class="all-reviews">
+                                <br>
+                                <h4>All Reviews</h4>
+                                <br>
+                                <ul>
+                                    <% for(review of listing.reviews) {%>
+                                        <div class="each-review">
+                                            <p>
+                                                <%= review.author.username %>
+                                            </p>
+                                            <p class="rating-stars">
+                                                <%= review.rating %>
+                                            </p>
+                                            <p style="font-size: 16px; text-align: justify;">
+                                                <%= review.comment %>
+                                            </p>
+
+
+                                            <form
+                                                action="/listings/<%= listing.id %>/reviews/<%= review._id %>?_method=DELETE"
+                                                method="post">
+                                                <button
+                                                    style="width: 100px; height: 30px; background-color: #1c1b1bd8; border: 0; border-radius: 5px; color: white;">Delete</button>
+
+                                            </form>
+
+
+                                        </div>
+                                        <% } %>
+                                </ul>
+                            </div>
+                    </div>
+        </div>
+
+        <script src="/js/rating.js"></script>
+    </body>
